@@ -20,7 +20,7 @@ public class QueryExecuter {
         } catch (Exception e) {
             var lastMethodName = Thread.currentThread().getStackTrace()[2].getMethodName();
             log.error(lastMethodName + " : Unable to run query: " + e.getLocalizedMessage() + " [Query] :" + query);
-            new AlertService().raiseAnAlert("alert1607", e.getLocalizedMessage().replaceAll("'", " "), "RegisterIMEIUpdate ", 0, conn);
+            new AlertService().raiseAnAlert("alert1607", e.replaceAll("'", " "), "Edr Msisdn Update ", 0, conn);
         }
         return a;
     }
