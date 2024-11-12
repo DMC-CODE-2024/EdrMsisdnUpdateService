@@ -4,11 +4,13 @@
  */
 package com.gl.AlertAudit;
 
+import com.gl.Application;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 
 public class AlertService {
@@ -27,7 +29,8 @@ public class AlertService {
             description = description.replaceAll("<process_name>", alertProcess)
                     .replaceAll("<e>", alertMessage);
             logger.info("alert message: " + description);
-            String sqll = "Insert into sys_generated_alert (alert_id,description,status,user_id) values('"  + alertCode + "' , '" + description + "', 0, " + userId + " ) ";
+            String sqll = "Insert into sys_generated_alert (alert_id,description,status,user_id,feature_name,server_name) " +
+                    " values('" + alertCode + "' , '" + description + "', 0, " + userId + "  ,'EdrMsisdnUpdate' , '" + Application.serverName + "'  ) ";
             logger.info("Inserting alert into running alert db" + sqll);
             stmt.executeUpdate(sqll);
         } catch (Exception e) {

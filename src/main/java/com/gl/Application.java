@@ -14,12 +14,15 @@ public class Application {
     public static String appDb;
     public static String audDb;
     public static String edrDb;
+    public static String serverName;
+
 
     public static void main(String[] args) {
         try {
             appDb = propertyReader.getConfigPropValue("appdbName");
             audDb = propertyReader.getConfigPropValue("auddbName");
             edrDb = propertyReader.getConfigPropValue("edrappdbName");
+            serverName = propertyReader.getConfigPropValue("serverName");
         } catch (Exception e) {
             log.error("Not able to fetch information " + e);
         }

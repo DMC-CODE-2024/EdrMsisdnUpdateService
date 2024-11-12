@@ -16,6 +16,6 @@ public class ProcessMsisdnUpdate {
 
     private static void updateActiveTableMsisdn(Connection conn, String table) {
         String q = "UPDATE " + table + " aui JOIN  " + Application.appDb + ".active_msisdn_list aml ON aui.imsi = aml.imsi SET aui.msisdn = aml.msisdn WHERE (aui.msisdn IS NULL OR aui.msisdn = '') ";
-        QueryExecuter.runQuery(conn, q);
+        QueryExecuter.runQuery(conn, q ,table);
     }
 }
